@@ -1,0 +1,16 @@
+.exclusive-card {
+    position: relative;
+    &__img-container {
+        img {
+            width: 320px;
+            border-radius: 10px;
+        }
+    }
+
+    &__btn-details {
+        position: absolute;
+        bottom: 2opx;
+        right: 20px;
+
+    }
+}
