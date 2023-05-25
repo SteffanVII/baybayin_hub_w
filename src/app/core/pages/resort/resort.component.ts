@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { TRoom } from "src/app/models/resort.type";
 
 @Component({
     selector : 'page-resort',
@@ -7,4 +8,8 @@ import { Component } from "@angular/core";
         './resort.component.scss'
     ]
 })
-export class ResortPageComponent {}
+export class ResortPageComponent {
+
+    resorts : TRoom[] = []
+
+}

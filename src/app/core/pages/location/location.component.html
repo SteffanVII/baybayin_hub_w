@@ -1,9 +1,12 @@
-<div class="location-header" >
-    <div class="location-header__background-img-container">
-        <img [src]='pageData.headerImgUrl' [alt]='pageData.locationName'>
+<div class="page-location" >
+    <div class="location-header" >
+        <div class="location-header__header-img-container">
+            <img [src]='pageData.headerImgUrl' [alt]='pageData.locationName'>
+        </div>
     </div>
-    <h1>{{pageData.locationName}}</h1>
-</div>
-<div class="resorts-container" >
-    <c-resort-card *ngFor='let rsrt of resorts' [data]="rsrt" ></c-resort-card>
+    <p class="location-description">{{pageData.locationDescription}}</p>
+    <h1 class="page-title" >Resorts in {{pageData.locationName}}</h1>
+    <div class="resorts-container" >
+        <c-resort-card *ngFor='let rsrt of resorts' [data]="rsrt" ></c-resort-card>
+    </div>
 </div>

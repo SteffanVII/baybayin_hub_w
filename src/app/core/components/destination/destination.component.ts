@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core"
+import { TRoom } from "src/app/models/resort.type";
 
 @Component({
     selector : 'c-destination',
@@ -10,12 +11,6 @@ import { Component, Input } from "@angular/core"
 
 export class DestinationComponent {
 
-    @Input() destinationData : {
-        destinationName : string,
-        imageUrl : string,
-        amenities : string[],
-        mainAmenities : string[],
-        description : string
-    } | undefined;
+    @Input() destinationData : TRoom | undefined;
 
 }
