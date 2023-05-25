@@ -1,0 +1,15 @@
+<div class="resort-card" >
+    <div class="resort-card__shadow" ></div>
+    <div class="resort-card__resort-img-container" >
+        <img [src]='data.imgUrl' [alt]='data.name'>
+    </div>
+    <div class="resort-card__details-container" >
+        <strong class="resort-card__details-container__resort-name">{{data.name}}</strong>
+        <a class="resort-card__details-container__resort-location" >
+            <span class="material-symbols-outlined" >location_on</span>
+            <span class="resort-card__details-container__resort-location__name">{{data.location}}</span>
+            <span class="resort-card__details-container__resort-location__tooltip tooltip">Show on map</span>
+        </a>
+        <button class="resort-card__details-container__btn-view-resort">Rooms</button>
+    </div>
+</div>

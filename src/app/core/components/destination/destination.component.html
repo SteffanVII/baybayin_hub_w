@@ -1,10 +1,10 @@
 <div class="destination-card" >
+    <div class="destination-card__shadow" ></div>
     <div class="destination-card__img-container" >
         <img [src]='destinationData?.imageUrl' [alt]='destinationData?.destinationName'>
     </div>
     <div class="destination-card__contents-container" >
         <span class="destination-card__contents-container__title">{{destinationData?.destinationName}}</span>
-        <!-- <span class="destination-card__contents-container__description">{{destinationData?.description}}</span> -->
         <button class="destination-card__contents-container__btn-show-rates" >More details</button>
         <div class="destination-card__contents-container__amenities-container">
             <span class="destination-card__contents-container__amenities-container__name">Amenities</span>
@@ -24,6 +24,7 @@
             <span>3 People</span>
             <!-- <span>People</span> -->
         </div>
+        <span class="destination-card__contents-container__description">{{destinationData?.description}}</span>
         <div class="destination-card__contents-container__price-cut">
             <span class="destination-card__contents-container__price-cut__pcper" >10% Off</span>
             <span class="destination-card__contents-container__price-cut__pcno" >₱16,500</span>

@@ -3,22 +3,22 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { DestinationComponent } from './components/destination/destination.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { LocationPageComponent } from './pages/location/location.component';
-import { ResortCardComponent } from './components/resort/resort.component';
-import { ResortsPageComponent } from './pages/resorts/resorts.component';
+import { ResortPageComponent } from './pages/resort/resort.component';
+import { ResortCardComponent } from './components/resortCard/resort.component';
+import { ResortsPageComponent } from './pages/location/location.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     DestinationComponent,
-    LocationPageComponent,
+    ResortPageComponent,
     ResortCardComponent,
     ResortsPageComponent
   ],
   exports : [
     HeaderComponent,
     DestinationComponent,
-    LocationPageComponent,
+    ResortPageComponent,
     ResortCardComponent,
     ResortsPageComponent
   ],
