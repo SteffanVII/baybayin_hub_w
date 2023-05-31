@@ -2,12 +2,18 @@
 
 .destination-card {
     position: relative;
-    z-index: 1;
 
     width: 100%;
-    height: 400px;
+    height: 350px;
+
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 100%;
 
     border-radius: 10px;
+    // border: 1px solid gray;
+
+    background-color: white;
 
     // box-shadow: 0px 10px 60px 30px rgb(203, 203, 203);
     
@@ -24,18 +30,20 @@
 
         border-radius: 10px;
 
-        box-shadow: 0px 10px 60px 30px rgba(63, 63, 63, 0.3);
+        box-shadow: 0px 10px 60px 30px rgba(63, 63, 63, 0.15);
     }
 
     &__img-container {
 
-        position: absolute;
-        top: 0;
-        left: 0;
+        // position: absolute;
+        position: relative;
+        // top: 0;
+        // left: 0;
         width: 100%;
+        width: 300px;
         height: 100%;
 
-        z-index: 1;
+        z-index: auto;
 
         border-radius: 10px;
 
@@ -54,13 +62,14 @@
 
 
     &__contents-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
+        // position: absolute;
+        position: relative;
+        // top: 0;
+        // left: 0;
+        width: auto;
         height: 100%;
 
-        z-index: 1;
+        z-index: auto;
 
         padding: 20px;
         border-radius: 10px;
@@ -69,16 +78,17 @@
         flex-flow: column;
         gap: 10px;
 
-        background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) );
+        // background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) );
 
         &__title {
             color: white;
+            color: black;
             font-family: $roboto;
             font-family: $poppins;
-            font-family: $playfair-display;
-            font-size: 1.8em;
+            // font-family: $playfair-display;
+            font-size: 1.4em;
             font-weight: 700;
-            font-style: italic;
+            // font-style: italic;
         }
 
         &__description {
@@ -87,22 +97,25 @@
             // left: 20px;
             margin-top: auto;
 
-            max-width: 60%;
+            max-width: 70%;
             max-height: 300px;
             overflow-y: auto;
 
             display: inline-block;
             
             color: white;
+            color: black;
             font-family: $poppins;
-            font-size: 0.9em;
+            font-size: 0.75em;
 
             &::-webkit-scrollbar {
                 display: none;
             }
 
             visibility: hidden;
+            visibility: visible;
             opacity: 0;
+            opacity: 1  ;
 
             transition: opacity 0.2s,
                         visibility 0s 0.2s;
@@ -115,12 +128,13 @@
             padding: 13px;
 
             border: 1px solid white;
+            border: 1px solid black;
             background-color: transparent;
 
-            color: white;
+            color: black;
             text-transform: uppercase;
             font-family: $poppins;
-            font-size: 1.1em;
+            font-size: 0.8em;
 
             opacity: 0;
             visibility: hidden;
@@ -133,8 +147,8 @@
 
         &__amenities-container {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             width: fit-content;
 
             display: flex;
@@ -153,9 +167,10 @@
 
             &__name {
                 font-family: $poppins;
-                font-weight: 700;
+                font-size: 0.7em;
+                // font-weight: 700;
                 // text-transform: lowercase;
-                color: white;
+                color: black;
             }
 
             &__amenities {
@@ -168,54 +183,77 @@
             }
 
             .material-symbols-outlined {
-                color: white;
+                padding: 4px;
+                color: black;
+                // border-radius: 5px;
+                border: 1px solid transparent;
+
+                font-size: 1.3em;
+                
+                &.verified {
+                    border-color: black;
+                }
             }
 
         }
 
         &__location {
 
+            position: relative;
+
             width: fit-content;
-            padding: 5px 8px;
+            // padding: 5px 8px;
             // margin-top: auto;
 
             display: flex;
             align-items: center;
             gap: 5px;
 
-            border: 1px solid white;
+            // border: 1px solid white;
+            // border: 1px solid black;
             border-radius: 5px;
 
             color: white;
+            color: black;
             font-family: $poppins;
             font-weight: 600;
-            font-size: 0.8em;
+            font-size: 0.7em;
+
+            cursor: pointer;
 
             .material-symbols-outlined {
                 color: white;
+                color: black;
+            }
+
+            .tooltip {
+                top: 0;
+                left: calc(100% + 10px);
             }
         }
 
         &__person-count {
             width: fit-content;
-            padding: 5px 8px;
+            // padding: 5px 8px;
 
             display: flex;
             align-items: center;
             gap: 5px;
 
-            border: 1px solid white;
+            // border: 1px solid white;
+            // border: 1px solid black;
             border-radius: 5px;
 
-            color: white;
+            color: black;
 
             // text-transform: uppercase;
-            font-size: 0.8em;
+            font-size: 0.7em;
             font-family: $roboto;
             font-weight: 600;
 
             .material-symbols-outlined {
                 color: white;
+                color: black;
                 // font-size: 1.3em;
             }
         }
@@ -231,6 +269,7 @@
 
             font-family: $poppins;
             color: white;
+            color: black;
 
             &__pno {
                 position: relative;
@@ -245,9 +284,9 @@
     
                 background-color: transparent;
                 
-                font-family: $playfair-display;
+                // font-family: $playfair-display;
                 font-weight: 600;
-                font-size: 1.8em;
+                font-size: 1.2em;
     
                 transition: background-color 0.2s, color 0.2s;
             }
@@ -277,6 +316,7 @@
 
             font-family: $poppins;
             color: white;
+            color: black;
 
             &__pcper {
                 width: fit-content;
@@ -291,7 +331,7 @@
                 font-family: $playfair-display;
                 font-family: $poppins;
                 font-weight: 600;
-                font-size: 1em;
+                font-size: 0.8em;
                 text-transform: uppercase;
 
                 color: black;
@@ -299,15 +339,9 @@
 
             &__pcno {
                 text-decoration: line-through;
-                font-family: $playfair-display;
+                // font-family: $playfair-display;
             }
         }
-    }
-
-    &:hover {
-        // border-radius: 5px;
-        // transform: scale(0.98);
-        // transition: transform 0.2s, border-radius 0.2s;
     }
 
     &:hover & {
@@ -322,7 +356,7 @@
 
         &__contents-container {
 
-            background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8) );
+            // background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8) );
 
             &__description {
                 visibility: visible;
@@ -340,8 +374,8 @@
                             background-color 0.2s;
 
                 &:hover {
-                    color: black;
-                    background-color: white;
+                    color: white;
+                    background-color: black;
                     
                     transition: color 0.2s,
                                 background-color 0.2s;

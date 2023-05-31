@@ -1,0 +1,41 @@
+<div class="page-room">
+
+    <div class="page-room-body">
+        <div class="page-room-body__main-card">
+            <div class="page-room-body__main-card__date">
+                <p>Please choose your check in date</p>
+            </div>
+            <div class="page-room-body__main-card__date-picker">
+                <!-- <mat-calendar  class="page-room-body__main-card__date-picker__left"></mat-calendar>
+                <mat-calendar  class="page-room-body__main-card__date-picker__right"></mat-calendar> -->
+                <inline-range-calendar></inline-range-calendar>
+            </div>
+            <button class="page-room-body__main-card__reserve-btn">
+                Login to reserve
+            </button>
+            <div class="page-room-body__main-card__price" >
+                <span class="page-room-body__main-card__price__pno" >{{finalPrice}}</span>
+                <span class="page-room-body__main-card__price__duration">
+                   <span>for</span> {{data?.duration}}     <span class="material-symbols-outlined day" >clear_day</span>      {{data?.duration! - 1}}     <span class="material-symbols-outlined night" >dark_mode</span>
+                </span>
+            </div>
+            <div class="page-room-body__main-card__price-cut">
+                <span class="page-room-body__main-card__price-cut__pcper" >{{data?.price?.cutPercent}}% Off</span>
+                <span class="page-room-body__main-card__price-cut__pcno" >{{price}}</span>
+            </div>
+            <h2 class="page-room-body__main-card__room-name" >{{data?.destinationName}}</h2>
+            <span class="page-room-body__main-card__location">
+                <span class="material-symbols-outlined" >location_on</span>
+                {{data?.location}}
+            </span>
+            <span class="page-room-body__main-card__person-count">
+                <span class="material-symbols-outlined" >person</span>
+                {{data?.personCount + " person"}}
+            </span>
+        </div>
+        <div class="page-room-body__gallery-container">
+            <c-gallery *ngIf="data?.roomGalleryUrls?.length! > 0" [imgUrls]="data?.roomGalleryUrls!" ></c-gallery>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,45 @@
+<div class="gallery" >
+    <div class="gallery__curr-image-container" >
+        <div
+            *ngIf="front || slideLeft || slideRight"
+            class="gallery__curr-image-container__front "
+            [class.outright]="front && slideLeft"
+            [class.outleft]="front && slideRight"
+            [class.inright]="!front && slideRight"
+            [class.inleft]="!front && slideLeft"
+            (animationend)="slidingEnd( $event )"
+        >
+            <img [src]="frontUrl" alt="current image">
+        </div>
+        <div
+            *ngIf="!front || slideLeft || slideRight"
+            class="gallery__curr-image-container__back"
+            [class.outright]="!front && slideLeft"
+            [class.outleft]="!front && slideRight"
+            [class.inright]="front && slideRight"
+            [class.inleft]="front && slideLeft"
+            (animationend)="slidingEnd( $event )"
+        >
+            <img [src]="backUrl" alt="current image">
+        </div>
+        <button
+            class="gallery__curr-image-container__nav-left"
+            (click)="slide(0)"
+        ><span class="material-symbols-outlined" >arrow_left</span></button>
+        <button
+            class="gallery__curr-image-container__nav-right"
+            (click)="slide(1)"
+        ><span class="material-symbols-outlined" >arrow_right</span></button>
+    </div>
+    <div class="gallery__image-previews" #previewsContainer>
+       <button 
+            *ngFor='let url of imgUrls; let i = index'
+            class="gallery__image-previews__preview"
+            [class.active]="position == i"
+            [id]="'prev-img-' + i"
+            (click)="changePosition(i)"
+            >
+            <img [src]="url" [alt]=" 'image ' + i + ' preview' " >
+       </button> 
+    </div>
+</div>

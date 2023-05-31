@@ -3,8 +3,8 @@ import { TResort } from "src/app/models/resort.type";
 
 @Component({
     selector : 'c-resort-card',
-    templateUrl : './resort.component.html',
-    styleUrls : ['./resort.component.scss']
+    templateUrl : './resortcard.component.html',
+    styleUrls : ['./resortcard.component.scss']
 })
 export class ResortCardComponent {
 
