@@ -1,41 +1,85 @@
 <div class="page-room">
 
     <div class="page-room-body">
+        <!-- <div class="page-room-body__room-details">
+            <h2 class="page-room-body__room-details__room-name" >{{data?.destinationName}}</h2>
+            <span class="page-room-body__room-details__location">
+                <span class="material-symbols-outlined" >location_on</span>
+                {{data?.location}}
+            </span>
+            <span class="page-room-body__room-details__person-count">
+                <span class="material-symbols-outlined" >person</span>
+                {{data?.personCount + " person"}}
+            </span>
+        </div> -->
         <div class="page-room-body__main-card">
-            <div class="page-room-body__main-card__date">
-                <p>Please choose your check in date</p>
-            </div>
-            <div class="page-room-body__main-card__date-picker">
-                <!-- <mat-calendar  class="page-room-body__main-card__date-picker__left"></mat-calendar>
-                <mat-calendar  class="page-room-body__main-card__date-picker__right"></mat-calendar> -->
-                <inline-range-calendar></inline-range-calendar>
-            </div>
-            <button class="page-room-body__main-card__reserve-btn">
-                Login to reserve
-            </button>
+            <h2 class="page-room-body__main-card__room-name" >{{data?.destinationName}}</h2>
+            <span class="page-room-body__main-card__location">
+                <span class="material-symbols-outlined" >location_on</span>
+                {{data?.location}}
+                <a href="">Show on map</a>
+            </span>
             <div class="page-room-body__main-card__price" >
                 <span class="page-room-body__main-card__price__pno" >{{finalPrice}}</span>
                 <span class="page-room-body__main-card__price__duration">
                    <span>for</span> {{data?.duration}}     <span class="material-symbols-outlined day" >clear_day</span>      {{data?.duration! - 1}}     <span class="material-symbols-outlined night" >dark_mode</span>
                 </span>
             </div>
-            <div class="page-room-body__main-card__price-cut">
-                <span class="page-room-body__main-card__price-cut__pcper" >{{data?.price?.cutPercent}}% Off</span>
-                <span class="page-room-body__main-card__price-cut__pcno" >{{price}}</span>
+            <div class="page-room-body__main-card__pcut-pcnt-wrapper">
+                <div class="page-room-body__main-card__pcut-pcnt-wrapper__price-cut">
+                    <span class="page-room-body__main-card__pcut-pcnt-wrapper__price-cut__pcper" >{{data?.price?.cutPercent}}% Off</span>
+                    <span class="page-room-body__main-card__pcut-pcnt-wrapper__pcno" >{{price}}</span>
+                </div>
+                <span class="page-room-body__main-card__pcut-pcnt-wrapper__person-count">
+                    <span class="material-symbols-outlined" >person</span>
+                    {{data?.personCount + " person"}}
+                </span>
             </div>
-            <h2 class="page-room-body__main-card__room-name" >{{data?.destinationName}}</h2>
-            <span class="page-room-body__main-card__location">
+            <div class="page-room-body__main-card__date-picker">
+                <inline-range-calendar (datePickEvent)="onDatePick($event)" ></inline-range-calendar>
+            </div>
+            <div class="page-room-body__main-card__date">
+                <p *ngIf="!date">Please choose your check in date</p>
+                <span *ngIf="date"
+                        class="page-room-body__main-card__date__range"
+                >
+                    <span><span class="material-symbols-outlined">today</span> {{start}}</span>
+                    <span class="page-room-body__main-card__date__range__duration">      {{data?.duration}}<span class="material-symbols-outlined" >dark_mode</span> </span>
+                    <span><span class="material-symbols-outlined">event</span> {{end}}</span>
+                </span>
+            </div>
+            <button class="page-room-body__main-card__reserve-btn">
+                Login to reserve
+            </button>
+
+            <!-- <span class="page-room-body__main-card__person-count">
+                <span class="material-symbols-outlined" >person</span>
+                {{data?.personCount + " person"}}
+            </span> -->
+            <!-- <h2 class="page-room-body__main-card__room-name" >{{data?.destinationName}}</h2> -->
+            <!-- <span class="page-room-body__main-card__location">
                 <span class="material-symbols-outlined" >location_on</span>
                 {{data?.location}}
             </span>
             <span class="page-room-body__main-card__person-count">
                 <span class="material-symbols-outlined" >person</span>
                 {{data?.personCount + " person"}}
-            </span>
+            </span> -->
+            <p class="page-room-body__main-card__description" >{{data?.description}}</p>
         </div>
-        <div class="page-room-body__gallery-container">
+        <div class="page-room-body__right-container">
             <c-gallery *ngIf="data?.roomGalleryUrls?.length! > 0" [imgUrls]="data?.roomGalleryUrls!" ></c-gallery>
+            <div class="page-room-body__right-container__inclusions">
+                <span class="page-room-body__right-container__inclusions__str">Inclusions - </span>
+                <ul *ngIf="data?.inclusions!.length > 0" >
+                    <li *ngFor="let i of data?.inclusions" >
+                        <!-- <strong>{{i}}</strong> -->
+                        {{i}}
+                    </li>
+                </ul>
+            </div>
         </div>
+
     </div>
 
 </div>

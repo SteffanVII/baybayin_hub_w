@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { TResortPage } from "src/app/models/resort.type";
+import { TResortPage } from "src/app/models/resort.model";
 
 @Component({
     selector : 'page-resort',

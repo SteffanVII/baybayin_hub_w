@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { TResort } from "src/app/models/resort.type";
+import { TResort } from "src/app/models/resort.model";
 
 @Component({
     selector : 'c-resort-card',

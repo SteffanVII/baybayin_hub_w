@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core"
-import { TRoom } from "src/app/models/resort.type";
+import { TRoom } from "src/app/models/resort.model";
 
 @Component({
     selector : 'c-room',

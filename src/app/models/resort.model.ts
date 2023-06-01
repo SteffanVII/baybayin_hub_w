@@ -23,9 +23,10 @@ export type TRoom = {
     price : {
         value : number,
         cutPercent : number
-    }
+    },
 }
 
 export type TRoomPage = TRoom & {
-    roomGalleryUrls : string[]
+    roomGalleryUrls : string[],
+    inclusions : string[]
 }

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { TLocation } from "src/app/models/location.type";
+import { TLocation } from "src/app/models/location.model";
 
 @Component({
     selector : 'page-location',

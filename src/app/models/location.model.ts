@@ -1,4 +1,4 @@
-import { TResort } from "./resort.type"
+import { TResort } from "./resort.model"
 
 export type TLocation = {
     headerImgUrl : string,

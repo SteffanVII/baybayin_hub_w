@@ -1,5 +1,22 @@
-<mat-calendar
-    [selected]="range"
-    (selectedChange)="selectedChange($event)"
->
-</mat-calendar>
+<div class="inline-date-picker-container">
+    <mat-calendar
+        class="inline-date-picker-container__picker"
+        startView="month"
+        [startAt]="cal1"
+        [selected]="range"
+        (selectedChange)="selectedChange($event)"
+        [minDate]="cal1"
+        >
+    </mat-calendar>
+    <mat-calendar
+        class="inline-date-picker-container__picker"
+        startView="month"
+        [startAt]="cal2"
+        [selected]="range"
+        (selectedChange)="selectedChange($event)"
+        (viewChanged)="monthChange($event)"
+        [minDate]="cal1"
+    >
+    </mat-calendar>
+
+</div>
