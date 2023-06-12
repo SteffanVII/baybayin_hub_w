@@ -15,8 +15,21 @@ export class RoomPageComponent implements OnInit {
         destinationName : "EMR - Balcony",
         location : 'Bgy. Corong Corong, El Nido, Palawan',
         imageUrl : "../assets/location_image_placeholder.jpg",
-        amenities : ["restaurant"],
-        verified : ["internet"],
+        amenities : [
+            "Restaurant",
+            "Kitchen Access",
+            "Wifi",
+            "Pool Access",
+            "Linens & Towels",
+            "Beach",
+            "Locker/Cabinet"
+        ],
+        verified : [
+            "Internet",
+            "Air Conditioning",
+            "Private Bathroom",
+            "Shower"
+        ],
         description : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         duration : 6,
         personCount : 3,

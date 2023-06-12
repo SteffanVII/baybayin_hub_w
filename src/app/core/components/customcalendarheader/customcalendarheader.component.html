@@ -1,0 +1,13 @@
+<div class="mat-calendar-header">
+    <div class="mat-calendar-header-controls">
+        <button mat-icon-button type="button" class="mat-calendar-previous-button"
+                [disabled]="!previousEnabled()" (click)="customPrev()"
+                [attr.aria-label]="prevButtonLabel">Prev
+        </button>
+
+        <button mat-icon-button type="button" class="mat-calendar-next-button"
+                [disabled]="!nextEnabled()" (click)="customNext()"
+                [attr.aria-label]="nextButtonLabel">Next
+        </button>
+    </div>
+</div>

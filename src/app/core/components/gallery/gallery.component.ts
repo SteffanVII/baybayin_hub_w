@@ -5,9 +5,14 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from "
     templateUrl : './gallery.component.html',
     styleUrls : ['./gallery.component.scss']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit, AfterViewInit {
 
     @Input() imgUrls : string[] = [];
+    @Input() fullWidth : boolean = false;
+    @Input() height : number = 500;
+    @Input() showPreview : boolean = true;
+    @Input() staticc : boolean = false;
+
     position  : number = 0;
     len : number = 0;
     slideLeft : boolean = false;
@@ -17,7 +22,10 @@ export class GalleryComponent implements OnInit {
     frontUrl : string = '';
     backUrl : string = '';
 
-    @ViewChild( 'previewsContainer' ) prevCon! : ElementRef<HTMLDivElement>;
+    intervalTimer : ReturnType<typeof setInterval> | undefined;
+    intervalPauseTimer : ReturnType<typeof setTimeout> | undefined;
+
+    @ViewChild( 'previewsContainer' ) prevCon : ElementRef<HTMLDivElement> | undefined;
     
     ngOnInit(): void {
         this.len = this.imgUrls.length - 1;
@@ -25,19 +33,34 @@ export class GalleryComponent implements OnInit {
         this.backUrl = this.imgUrls[this.position];
     }
 
+    ngAfterViewInit(): void {
+        this.intervalTimer = setInterval( () => {
+            this.slide(1);
+        }, 5000 );
+    }
+
     changePosition( index : number ) {
         this.position = index;
         this.frontUrl = this.imgUrls[this.position];
         this.backUrl = this.imgUrls[this.position];
-        
-        let target = this.prevCon.nativeElement.querySelector(`#prev-img-${index}`) as HTMLDivElement;
-        let parent = this.prevCon.nativeElement;
 
-        let pos = target.offsetLeft - ((parent.clientWidth - target.offsetWidth) / 2);
-        parent.scrollTo({
-            behavior : 'smooth',
-            left : pos
-        })
+        if ( this.prevCon ) {
+            let target = this.prevCon.nativeElement.querySelector(`#prev-img-${index}`) as HTMLDivElement;
+            let parent = this.prevCon.nativeElement;
+    
+            let pos = target.offsetLeft - ((parent.clientWidth - target.offsetWidth) / 2);
+            parent.scrollTo({
+                behavior : 'smooth',
+                left : pos
+            })
+        }
+
+        this.pauseSliding();
+    }
+
+    slideButtonClick( direction : number ) {
+        this.pauseSliding();
+        this.slide(direction);
     }
 
     slide( direction : number ) {
@@ -57,16 +80,17 @@ export class GalleryComponent implements OnInit {
                 this.to = true;
             }
 
-            let target = this.prevCon.nativeElement.querySelector(`#prev-img-${this.position}`) as HTMLDivElement;
-            let parent = this.prevCon.nativeElement;
-
-            let pos = target.offsetLeft - ((parent.clientWidth - target.offsetWidth) / 2);
-
-            parent.scrollTo({
-                behavior : 'smooth',
-                left : pos
-            })
-
+            if ( this.prevCon ) {
+                let target = this.prevCon.nativeElement.querySelector(`#prev-img-${this.position}`) as HTMLDivElement;
+                let parent = this.prevCon.nativeElement;
+    
+                let pos = target.offsetLeft - ((parent.clientWidth - target.offsetWidth) / 2);
+    
+                parent.scrollTo({
+                    behavior : 'smooth',
+                    left : pos
+                })
+            }
         }
     }
 
@@ -82,5 +106,15 @@ export class GalleryComponent implements OnInit {
             this.slideLeft = false;
             this.slideRight = false;
         }
+    }
+
+    pauseSliding() {
+        clearInterval(this.intervalTimer);
+        clearInterval(this.intervalPauseTimer);
+        this.intervalPauseTimer = setTimeout(() => {
+            this.intervalTimer = setInterval(() => {
+                this.slide(1);
+            }, 5000);
+        }, 20000);
     }
 }

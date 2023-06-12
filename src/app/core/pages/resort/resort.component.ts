@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, ViewChild } from "@angular/core";
 import { TResortPage } from "src/app/models/resort.model";
 
 @Component({
@@ -8,12 +8,34 @@ import { TResortPage } from "src/app/models/resort.model";
         './resort.component.scss'
     ]
 })
-export class ResortPageComponent {
+export class ResortPageComponent implements AfterViewInit {
+
+  constructor(
+    private cdr : ChangeDetectorRef
+  ) {}
 
     data : TResortPage = {
         name : "Baybayin Hub - La Union",
+        description : "A second home & office for Digital Nomads, Remote Workers, Entrepreneurs, Creatives & Freelancers that wants to achieve a Work-Life Balance and loves to Co-work & Co-Live with Like-Minded people. A guesthouse for everyone who are looking for a place to relax, recharge, reconnect with nature and to experience the best beachfront sunset in La Union.",
         location : 'San Juan, La Union',
         imgUrl : '../../../../assets/palawan-img-1.webp',
+        images : [
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiMGJmOWMzNDAtZDIzMi00YmQxLTk1OTEtYzhjNWE2ZTdkZjA4LnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NjAwLCJoZWlnaHQiOjQ1MCwiZml0IjoiY292ZXIifX19",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiYmFmZDI5OTQtZDU4Yi00MDg1LThmZmMtZTJhMjZmMWMyNGQwLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiMjRkMDEyZTQtODQwZC00YjQ3LWE2MGMtNTc3MzQyNjM2MGJlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiNjE3YmNlMGQtNTIzNi00YTFiLWI2OTUtZTk2MjEyYjE4ZWFiLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiMWY5ODdjZTEtMmE5OC00ZTBiLTgxODQtMzc1YjA1YWZkODliLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiMjRkMDEyZTQtODQwZC00YjQ3LWE2MGMtNTc3MzQyNjM2MGJlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiNjE3YmNlMGQtNTIzNi00YTFiLWI2OTUtZTk2MjEyYjE4ZWFiLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiMWY5ODdjZTEtMmE5OC00ZTBiLTgxODQtMzc1YjA1YWZkODliLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiMjRkMDEyZTQtODQwZC00YjQ3LWE2MGMtNTc3MzQyNjM2MGJlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiNjE3YmNlMGQtNTIzNi00YTFiLWI2OTUtZTk2MjEyYjE4ZWFiLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiMWY5ODdjZTEtMmE5OC00ZTBiLTgxODQtMzc1YjA1YWZkODliLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiNjE3YmNlMGQtNTIzNi00YTFiLWI2OTUtZTk2MjEyYjE4ZWFiLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiMWY5ODdjZTEtMmE5OC00ZTBiLTgxODQtMzc1YjA1YWZkODliLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiNjE3YmNlMGQtNTIzNi00YTFiLWI2OTUtZTk2MjEyYjE4ZWFiLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ==",
+          "https://d391qcuriguuyo.cloudfront.net/eyJidWNrZXQiOiJiYXliYXlpbmh1Yi13ZWJzaXRlLWRldmVsb3BtZW50Iiwia2V5IjoiMWY5ODdjZTEtMmE5OC00ZTBiLTgxODQtMzc1YjA1YWZkODliLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjYwMCwiaGVpZ2h0Ijo0NTAsImZpdCI6ImNvdmVyIn19fQ=="
+        ],
         rooms : [
             {
                 destinationName : "EMR - Balcony",
@@ -112,8 +134,32 @@ export class ResortPageComponent {
                   value : 60000,
                   cutPercent : 25
                 }
-              }
-        ]
-    }
+            }
+    ]
+  }
+
+  @ViewChild('page') pageEl! : ElementRef<HTMLDivElement>;
+
+  previewCount : number = 0;
+  viewportGallery : boolean = false;
+
+  ngAfterViewInit(): void {
+    this.countPreviews();
+  }
+  
+  @HostListener( 'window:resize' )
+  countPreviews() {
+    let width = this.pageEl.nativeElement.clientWidth;
+    this.previewCount = Math.floor( width / 180 );
+  }
+
+  showGallery() {
+    this.viewportGallery = true;
+  }
+  hideGallery() {
+    this.viewportGallery = false;
+    console.log(this.viewportGallery);
+    
+  }
 
 }

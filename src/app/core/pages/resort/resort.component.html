@@ -1,30 +1,63 @@
-<div class="page-resort" >
+<div #page class="container-1200" >
 
-  <div class="resort-header" >
-      <div class="resort-header__header-img-container">
+  <!-- <div class="resort-header" >
+      <div class="header-img-container">
         <img [src]="data.imgUrl" alt="palawan scene 1">
       </div>
-      <div class="resort-header__contents-container">
-          <!-- <h2>Palawan</h2> -->
-          <img class="resort-header__contents-container__resort-logo" src="../../../../assets/La Union Hub.png" alt="">
-          <!-- <hr> -->
-          <!-- <p class="resort-header__contents-container__resort-description" >La Union is one of the four prominent provinces in Region 1. Dubbed as the Surfing Capital of the North, tourists do not usually mind the long-hour travel just to have that once-in- a-lifetime experience with the waves and seas.  The province of La Union definitely knows how to give a good time, and it allows millennials to have fun in an insane manner. The province is a place to be chill and laid-back; but when it comes to having a good time, it is certainly one of the best places to lose yourself in. ELYU is where millennials can relish every bit of their youthful years and meet new acquaintances. A place where they can be carefree and probably unleash a little bit of that of wildness. Although La Union is the perfect getaway for peace and serenity, it can also give you the best night of your life.</p> -->
+      <div class="logo-container">
+          <img class="logo-container__resort-logo" src="../../../../assets/La Union Hub.png" alt="">
       </div>
-  </div>
+  </div> -->
 
+  <c-viewport-gallery *ngIf="viewportGallery"  [images]="data.images" (closeEvent)="hideGallery()" ></c-viewport-gallery>
   
-  <div class="resort-page-body">
-    <aside class="free-space">
-      
-    </aside>
-    <div class="rooms-container" >
-      <ng-template *ngIf="data.rooms.length > 0 then rooms else noRoomMessage"></ng-template>
-      <ng-template #rooms>
-        <c-room *ngFor="let room of data.rooms" [destinationData]="room"></c-room>
-      </ng-template>
-      <ng-template #noRoomMessage>
-        <p  class="resort-page-body__no-room-message">No available rooms 😞</p>
-      </ng-template>
-    </div>
+  <div class="resort-body">
+    <section class="details-section">
+      <div class="main-image">
+        <img [src]="data.images[0]">
+        <button class="viewport-gallery-viewer" (click)="showGallery()">
+          <span>View</span>
+        </button>
+      </div>
+      <div class="other-images"
+        [ngStyle]="{
+          '--repeat' : previewCount
+        }"
+      >
+        <ng-container *ngFor="let url of data.images ; let i = index">
+          <div class="other-image" *ngIf="i <= previewCount && i !== 0 " >
+            <img [src]="url" [alt]="previewCount">
+            <button class="viewport-gallery-viewer" (click)="showGallery()" >
+              <span>View</span>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+      <div class="resort-details" >
+        <h2 class="resort-name" >{{data.name}}</h2>
+        <p class="resort-location"><span class="material-symbols-outlined" >location_on</span> {{data.location}}</p>
+        <div class="show-on-map">
+          <div class="show-on-map__bg-wrapper">
+            <img src="../../../../assets/google-map-bg.avif" alt="Map background">
+          </div>
+          <span class="material-symbols-outlined">share_location</span>
+          <span class="show-on-map__btn">Map</span>
+        </div>
+        <c-readmore [text]="data.description"></c-readmore>
+      </div>
+    </section>
+    
+    <section class="main-section">
+      <div class="rooms-container" >
+        <span class="available-counter" >Available rooms : 14</span>
+        <ng-template *ngIf="data.rooms.length > 0 then rooms else noRoomMessage"></ng-template>
+        <ng-template #rooms>
+          <c-room *ngFor="let room of data.rooms" [destinationData]="room"></c-room>
+        </ng-template>
+        <ng-template #noRoomMessage>
+          <p  class="no-room-message">No available rooms 😞</p>
+        </ng-template>
+      </div>
+    </section>
   </div>
 </div>

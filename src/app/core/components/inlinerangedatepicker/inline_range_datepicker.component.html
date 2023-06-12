@@ -1,22 +1,25 @@
 <div class="inline-date-picker-container">
+    <!-- <div class="inline-date-picker-container__custom-header" >
+        <button (click)="moveView(0)" >Prev</button>
+        <button (click)="moveView(1)" >Next</button>
+    </div> -->
     <mat-calendar
-        class="inline-date-picker-container__picker"
-        startView="month"
+        #calendar_left
+        class="inline-date-picker-container__picker cal1"
         [startAt]="cal1"
         [selected]="range"
         (selectedChange)="selectedChange($event)"
         [minDate]="cal1"
         >
     </mat-calendar>
-    <mat-calendar
-        class="inline-date-picker-container__picker"
-        startView="month"
+    <mat-calendar 
+        #calendar_right
+        class="inline-date-picker-container__picker cal2"
         [startAt]="cal2"
         [selected]="range"
         (selectedChange)="selectedChange($event)"
-        (viewChanged)="monthChange($event)"
         [minDate]="cal1"
-    >
+        >
     </mat-calendar>
 
 </div>

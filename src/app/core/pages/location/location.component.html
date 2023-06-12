@@ -5,8 +5,8 @@
         </div>
         <img class="location-header__logo" [src]="pageData.headerLogoUrl" alt="Header Logo">
     </div>
-    <h1 class="location-resorts-text" ><span class="material-symbols-outlined" >location_on</span>Properties in <span class="location-resorts-text__name">{{pageData.locationName}}</span>  </h1>
     <p class="location-description">{{pageData.locationDescription}}</p>
+    <h1 class="location-resorts-text" ><span class="material-symbols-outlined" >location_on</span>Partner Resorts</h1>
     <div class="resorts-container" *ngIf=' pageData.resorts.length > 0; else noResortMessage ' >
         <c-resort-card *ngFor='let rsrt of pageData.resorts' [data]="rsrt" ></c-resort-card>
     </div>

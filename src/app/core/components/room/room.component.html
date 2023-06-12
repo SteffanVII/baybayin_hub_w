@@ -5,7 +5,7 @@
     </div>
     <div class="destination-card__contents-container" >
         <span class="destination-card__contents-container__title">{{destinationData?.destinationName}}</span>
-        <button class="destination-card__contents-container__btn-show-rates" >Book</button>
+        <a href="http://localhost:4200/room-1" class="destination-card__contents-container__btn-show-rates" >Book</a>
         <div class="destination-card__contents-container__amenities-container">
             <span class="destination-card__contents-container__amenities-container__name">Amenities</span>
             <div class="destination-card__contents-container__amenities-container__amenities">
@@ -15,25 +15,25 @@
                 <span class="material-symbols-outlined">ac_unit</span>
             </div>
         </div>
-        <div class="destination-card__contents-container__location tooltip-parent" >
+        <!-- <div class="destination-card__contents-container__location tooltip-parent" >
             <span class="material-symbols-outlined" >pin_drop</span>
             <span>{{destinationData?.location}}</span>
             <span class="resort-card__details-container__resort-location__tooltip tooltip">Show on map</span>
+        </div> -->
+        <div class="destination-card__contents-container__price" >
+            <span class="destination-card__contents-container__price__pno" >{{finalPrice}}</span>
+            <span class="destination-card__contents-container__price__duration">
+                <span>for</span> {{destinationData?.duration}}     <span class="material-symbols-outlined day" >clear_day</span>      {{destinationData?.duration! - 1}}     <span class="material-symbols-outlined night" >dark_mode</span>
+            </span>
+        </div>
+        <div class="destination-card__contents-container__price-cut">
+            <span class="destination-card__contents-container__price-cut__pcper" >{{destinationData?.price?.cutPercent}}% Off</span>
+            <span class="destination-card__contents-container__price-cut__pcno" >{{price}}</span>
         </div>
         <div class="destination-card__contents-container__person-count" >
             <span class="material-symbols-outlined">person</span>
             <span>{{destinationData?.personCount + " person" }}</span>
         </div>
         <span class="destination-card__contents-container__description">{{destinationData?.description}}</span>
-        <div class="destination-card__contents-container__price-cut">
-            <span class="destination-card__contents-container__price-cut__pcper" >{{destinationData?.price?.cutPercent}}% Off</span>
-            <span class="destination-card__contents-container__price-cut__pcno" >{{price}}</span>
-        </div>
-        <div class="destination-card__contents-container__price" >
-            <span class="destination-card__contents-container__price__pno" >{{finalPrice}}</span>
-            <span class="destination-card__contents-container__price__duration">
-               <span>for</span> {{destinationData?.duration}}     <span class="material-symbols-outlined day" >clear_day</span>      {{destinationData?.duration! - 1}}     <span class="material-symbols-outlined night" >dark_mode</span>
-            </span>
-        </div>
     </div>
 </div>

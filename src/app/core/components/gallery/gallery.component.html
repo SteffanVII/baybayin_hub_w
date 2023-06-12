@@ -1,5 +1,7 @@
-<div class="gallery" >
-    <div class="gallery__curr-image-container" >
+<div class="gallery" [ngClass]="{ 'full' : fullWidth}" >
+    <div class="gallery__curr-image-container"
+        [style.height.px]="height"
+    >
         <div
             *ngIf="front || slideLeft || slideRight"
             class="gallery__curr-image-container__front "
@@ -24,14 +26,14 @@
         </div>
         <button
             class="gallery__curr-image-container__nav-left"
-            (click)="slide(0)"
+            (click)="slideButtonClick(0)"
         ><span class="material-symbols-outlined" >arrow_left</span></button>
         <button
             class="gallery__curr-image-container__nav-right"
-            (click)="slide(1)"
+            (click)="slideButtonClick(1)"
         ><span class="material-symbols-outlined" >arrow_right</span></button>
     </div>
-    <div class="gallery__image-previews" #previewsContainer>
+    <div *ngIf="showPreview"  class="gallery__image-previews" #previewsContainer>
        <button 
             *ngFor='let url of imgUrls; let i = index'
             class="gallery__image-previews__preview"

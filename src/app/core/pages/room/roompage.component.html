@@ -1,85 +1,72 @@
-<div class="page-room">
+<div class="content-1200">
 
-    <div class="page-room-body">
-        <!-- <div class="page-room-body__room-details">
-            <h2 class="page-room-body__room-details__room-name" >{{data?.destinationName}}</h2>
-            <span class="page-room-body__room-details__location">
-                <span class="material-symbols-outlined" >location_on</span>
-                {{data?.location}}
-            </span>
-            <span class="page-room-body__room-details__person-count">
-                <span class="material-symbols-outlined" >person</span>
-                {{data?.personCount + " person"}}
-            </span>
-        </div> -->
-        <div class="page-room-body__main-card">
-            <h2 class="page-room-body__main-card__room-name" >{{data?.destinationName}}</h2>
-            <span class="page-room-body__main-card__location">
-                <span class="material-symbols-outlined" >location_on</span>
-                {{data?.location}}
-                <a href="">Show on map</a>
-            </span>
-            <div class="page-room-body__main-card__price" >
-                <span class="page-room-body__main-card__price__pno" >{{finalPrice}}</span>
-                <span class="page-room-body__main-card__price__duration">
+    <div class="room-body">
+        <div class="main-card">
+            <h2 class="room-name" >{{data?.destinationName}}</h2>
+            <div class="price" >
+                <span class="price__pno" >{{finalPrice}}</span>
+                <span class="price__duration">
                    <span>for</span> {{data?.duration}}     <span class="material-symbols-outlined day" >clear_day</span>      {{data?.duration! - 1}}     <span class="material-symbols-outlined night" >dark_mode</span>
                 </span>
             </div>
-            <div class="page-room-body__main-card__pcut-pcnt-wrapper">
-                <div class="page-room-body__main-card__pcut-pcnt-wrapper__price-cut">
-                    <span class="page-room-body__main-card__pcut-pcnt-wrapper__price-cut__pcper" >{{data?.price?.cutPercent}}% Off</span>
-                    <span class="page-room-body__main-card__pcut-pcnt-wrapper__pcno" >{{price}}</span>
+            <div class="pcut-pcnt-wrapper">
+                <div class="pcut-pcnt-wrapper__price-cut">
+                    <span class="pcut-pcnt-wrapper__price-cut__pcper" >{{data?.price?.cutPercent}}% Off</span>
+                    <span class="pcut-pcnt-wrapper__price-cut__pcno" >{{price}}</span>
                 </div>
-                <span class="page-room-body__main-card__pcut-pcnt-wrapper__person-count">
+                <span class="pcut-pcnt-wrapper__person-count">
                     <span class="material-symbols-outlined" >person</span>
                     {{data?.personCount + " person"}}
                 </span>
             </div>
-            <div class="page-room-body__main-card__date-picker">
+            <div class="date-picker">
                 <inline-range-calendar (datePickEvent)="onDatePick($event)" ></inline-range-calendar>
             </div>
-            <div class="page-room-body__main-card__date">
+            <div class="date">
                 <p *ngIf="!date">Please choose your check in date</p>
                 <span *ngIf="date"
-                        class="page-room-body__main-card__date__range"
+                        class="date__range"
                 >
                     <span><span class="material-symbols-outlined">today</span> {{start}}</span>
-                    <span class="page-room-body__main-card__date__range__duration">      {{data?.duration}}<span class="material-symbols-outlined" >dark_mode</span> </span>
+                    <span class="date__range__duration">      {{data?.duration}}<span class="material-symbols-outlined" >dark_mode</span> </span>
                     <span><span class="material-symbols-outlined">event</span> {{end}}</span>
                 </span>
             </div>
-            <button class="page-room-body__main-card__reserve-btn">
+            <button class="reserve-btn">
                 Login to reserve
             </button>
-
-            <!-- <span class="page-room-body__main-card__person-count">
-                <span class="material-symbols-outlined" >person</span>
-                {{data?.personCount + " person"}}
-            </span> -->
-            <!-- <h2 class="page-room-body__main-card__room-name" >{{data?.destinationName}}</h2> -->
-            <!-- <span class="page-room-body__main-card__location">
+            <div class="reminders">
+                <p><strong>* Validity period: 6 months from date of purchase</strong></p>
+                <p><strong>* Room rates may change without prior notice</strong></p>
+            </div>
+        </div>
+        <c-gallery *ngIf="data?.roomGalleryUrls?.length! > 0" [imgUrls]="data?.roomGalleryUrls!" ></c-gallery>
+        <div class="informations" >
+            <span class="location">
                 <span class="material-symbols-outlined" >location_on</span>
                 {{data?.location}}
+                <a target="_blank" [href]=" 'https://www.google.com/maps/search/?api=1&query=' + data?.location ">
+                    <span class="location__button-label">Show on map</span> 
+                    <span class="material-symbols-outlined" >location_on</span>
+                </a>
             </span>
-            <span class="page-room-body__main-card__person-count">
-                <span class="material-symbols-outlined" >person</span>
-                {{data?.personCount + " person"}}
-            </span> -->
-            <p class="page-room-body__main-card__description" >{{data?.description}}</p>
-        </div>
-        <div class="page-room-body__right-container">
-            <c-gallery *ngIf="data?.roomGalleryUrls?.length! > 0" [imgUrls]="data?.roomGalleryUrls!" ></c-gallery>
-            <div class="page-room-body__right-container__inclusions">
-                <span class="page-room-body__right-container__inclusions__str">Inclusions - </span>
+            <p class="description" >{{data?.description}}</p>
+            <div class="amenities">
+                <h3>Amenities</h3>
+                <div class="amenities-container">
+                    <span class="amenity verified" *ngFor="let a of data?.verified" >{{a}}</span>
+                    <span class="amenity" *ngFor="let a of data?.amenities" >{{a}}</span>
+                </div>
+            </div>
+            <div class="inclusions">
+                <h3 class="inclusions__str">Inclusions</h3>
                 <ul *ngIf="data?.inclusions!.length > 0" >
                     <li *ngFor="let i of data?.inclusions" >
-                        <!-- <strong>{{i}}</strong> -->
-                        {{i}}
+                        - {{i}}
                     </li>
                 </ul>
             </div>
         </div>
-
     </div>
 
 </div>

@@ -10,6 +10,7 @@ export class ResortCardComponent {
 
     @Input() data : TResort = {
         name : '',
+        description : '',
         location : '',
         imgUrl : ''
     };

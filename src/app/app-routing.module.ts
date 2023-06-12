@@ -5,8 +5,8 @@ import { LocationPageComponent } from './core/pages/location/location.component'
 import { RoomPageComponent } from './core/pages/room/roompage.component';
 
 const routes : Routes = [
+  { path : '', component : LocationPageComponent },
   { path : 'resort-1', component : ResortPageComponent },
-  { path : 'location-1', component : LocationPageComponent },
   { path : 'room-1', component : RoomPageComponent },
 ];
 

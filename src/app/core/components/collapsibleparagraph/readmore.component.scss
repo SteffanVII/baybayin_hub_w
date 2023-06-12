@@ -1,0 +1,39 @@
+@import '../../../../variables';
+
+.readmore-component {
+    position: relative;
+
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+
+    .readmore-text {
+        font-family: $roboto;
+        font-family: $poppins;
+        // line-height: 1.5em;
+    }
+
+    .readmore-btn {
+        width: fit-content;
+        padding: 8px 13px;
+
+        margin-left: auto;
+
+        border: 1px solid rgb(71, 71, 71);
+        border-radius: 40px;
+        background-color: transparent;
+
+        color: rgb(71, 71, 71);
+        font-family: $roboto-condensed;
+        font-weight: 600;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(71, 71, 71);
+            color: white;
+
+            transition: background-color 0.2s, color 0.2s;
+        }
+    }
+}

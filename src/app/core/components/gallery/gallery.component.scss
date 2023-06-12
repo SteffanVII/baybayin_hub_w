@@ -1,7 +1,9 @@
 .gallery {
-    width: fit-content;
+    position: relative;
 
-    // padding: 10px;
+    width: fit-content;
+    height: fit-content;
+
     display: flex;
     flex-flow: column;
     gap: 10px;
@@ -10,8 +12,7 @@
         
         position: relative;
 
-        width: 100%;
-        max-width: 700px;
+        width: 700px;
         height: 500px;
 
         // display: flex;
@@ -137,6 +138,7 @@
 
         width: 100%;
         max-width: 700px;
+        height: fit-content;
 
         overflow-y: hidden;
 
@@ -185,4 +187,13 @@
         }
     }
 
+    &.full {
+        width: 100%;
+    }
+
+    &.full & {
+        &__curr-image-container {
+            width: 100%;
+        }
+    }
 }
