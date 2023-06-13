@@ -7,26 +7,29 @@
 
       <div class="promo-container__header-content__main-card">
 
-         <button class="promo-container__header-content__main-card__buy-btn">Login to Buy</button>
-
          <div class="promo-container__header-content__main-card__discount-ribbon">
             <span>{{data.price.cutPer}} %off</span>
          </div>
-
+         <span class="promo-container__header-content__main-card__price">
+            {{formatPrice(this.data.price.value)}}
+         </span>
          <div class="promo-container__header-content__main-card__quantity">
             <label>Quantity:</label>
-         <button (click)="decrementQuantity()">-</button>
-        <input type="number" [value] = data.quantity (input)="calculatePrice()" (click)="incrementQuantity()"  >
-         <button (click)="incrementQuantity()">+</button>
-          </div>
+            <div class="promo-container__header-content__main-card__quantity__inputs">
+               <button (click)="decrementQuantity()">-</button>
+               <input type="number" [min]="1" [value]='quantity'  >
+               <button (click)="incrementQuantity()">+</button>
+            </div>
+         </div>
+         <button class="promo-container__header-content__main-card__buy-btn">Login to Buy</button>
 
           <div class="promo-container__header-content__main-card__value">
             <label>Price:</label>
-            <span>{{ data.price.value}} </span>
-            </div>
-            <div class="promo-container__header-content__main-card__note">
-               <p>Purchase up to 10 for use at any time within the booking period, see specific voucher terms and conditions below for further details and restrictions.</p>
-            </div>
+            <span>{{formatPrice(this.data.price.value * quantity)}} </span>
+         </div>
+         <div class="promo-container__header-content__main-card__note">
+            <p>Purchase up to 10 for use at any time within the booking period, see specific voucher terms and conditions below for further details and restrictions.</p>
+         </div>
 
       </div>
 

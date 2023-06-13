@@ -1,4 +1,4 @@
-import { Component , Input, OnInit} from "@angular/core";
+import { Component , ElementRef, Input, OnInit, ViewChild} from "@angular/core";
 import { Promo } from "../silverMembership/exclusive.model";
 
 @Component({
@@ -56,17 +56,21 @@ export class PromoComponent {
         ]
     }
 
-    calculatePrice() {
-        this.data.price.value = this.data.quantity * 1499;
-      }
+    @ViewChild( 'quantityInput' ) quantityInput! : ElementRef<HTMLInputElement>;
 
+    price = this.data.price.value;
+    quantity = 1;
+
+    formatPrice( price : number ) {
+        return new Intl.NumberFormat( 'en-PH', { style : 'currency', currency : 'PHP' } ).format( price );
+    }
       
-      decrementQuantity () {
-        this.data.price.value -=  1499;
-      }
+    decrementQuantity () {
+        if ( this.quantity > 1 ) this.quantity -= 1;
+    }
         
-      incrementQuantity () {
-        this.data.price.value +=  1499;
-}
+    incrementQuantity () {
+        this.quantity += 1;
+    }
 
 }
