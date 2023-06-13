@@ -11,6 +11,7 @@ import { PromoComponent } from './pages/promo/promo.component';
 import { fanRoomComponent } from './pages/fanRoom/fanRoom.component';
 import { PassComponent } from './pages/pass/pass.component';
 import { CouponComponent } from './components/coupon/coupon.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -45,7 +46,8 @@ import { CouponComponent } from './components/coupon/coupon.component';
   ],
   imports: [
     BrowserModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class CoreModule { }

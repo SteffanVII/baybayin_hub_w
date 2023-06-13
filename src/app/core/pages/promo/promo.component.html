@@ -16,9 +16,7 @@
          <div class="promo-container__header-content__main-card__quantity">
             <label>Quantity:</label>
             <div class="promo-container__header-content__main-card__quantity__inputs">
-               <button (click)="decrementQuantity()">-</button>
-               <input type="number" [min]="1" [value]='quantity'  >
-               <button (click)="incrementQuantity()">+</button>
+               <input type="number" [min]="1" [(ngModel)]="quantity"  >
             </div>
          </div>
          <button class="promo-container__header-content__main-card__buy-btn">Login to Buy</button>
