@@ -35,15 +35,17 @@
       </div>
       <div class="resort-details" >
         <h2 class="resort-name" >{{data.name}}</h2>
-        <p class="resort-location"><span class="material-symbols-outlined" >location_on</span> {{data.location}}</p>
-        <div class="show-on-map">
-          <div class="show-on-map__bg-wrapper">
-            <img src="../../../../assets/google-map-bg.avif" alt="Map background">
+        <div class="resort-location">
+          <div class="show-on-map">
+            <div class="show-on-map__bg-wrapper">
+              <img src="../../../../assets/google-map-bg.avif" alt="Map background">
+            </div>
+            <span class="material-symbols-outlined">share_location</span>
+            <button class="show-on-map__btn">Map</button>
           </div>
-          <span class="material-symbols-outlined">share_location</span>
-          <span class="show-on-map__btn">Map</span>
+          <span class="material-symbols-outlined" >location_on</span> {{data.location}}
         </div>
-        <c-readmore [text]="data.description"></c-readmore>
+        <c-readmore [text]="data.description" [max]="400"></c-readmore>
       </div>
     </section>
     

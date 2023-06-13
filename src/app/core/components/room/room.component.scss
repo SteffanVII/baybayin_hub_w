@@ -415,4 +415,78 @@
             }
         }
     }
+
+    @media ( max-width : 800px ) {
+
+        grid-template-columns: 100%;
+
+        &__img-container {
+            width: 100%;
+        }
+
+        &__contents-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3) );
+
+            &__title, &__btn-show-rates, &__price, &__person-count {
+                color: white;
+            }
+
+            &__description {
+                display: none;
+            }
+
+            &__btn-show-rates {
+                border-color: white;
+            }
+
+            &__amenities-container {
+                position: initial;
+                display: inline-flex;
+
+                margin-top: auto;
+
+                &__name, &__amenities {
+                    color: white;
+                    .material-symbols-outlined {
+                        color: white;
+
+                        &.verified {
+                            border-color: white;
+                        }
+                    }    
+                    
+                }   
+
+                &__name {
+                    display: none;
+                }
+            }
+
+            &__person-count {
+                .material-symbols-outlined {
+                    color: white;
+                }
+            }
+
+            &__price-cut {
+                &__pcno {
+                    color: white;
+                }
+            }
+        }
+
+        &:hover & {
+            
+            &__contents-container {
+                background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6) );
+            }
+
+        }
+    }
 }

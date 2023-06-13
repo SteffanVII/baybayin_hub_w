@@ -1,9 +1,9 @@
 <div class="readmore-component">
     <p class="readmore-text">
         {{ collapse ? text : text.slice(0, max - 1) }}
-        <span *ngIf="!collapse" >...</span>
+        <span *ngIf="!collapse && text.length > max" >...</span>
     </p>
-    <button class="readmore-btn" (click)="collapseEvent()" >
+    <button *ngIf="text.length > max" class="readmore-btn" (click)="collapseEvent()" >
         {{ collapse ? "Show Less" : "Read More"}}
     </button>
 </div>

@@ -6,15 +6,7 @@
     <div class="destination-card__contents-container" >
         <span class="destination-card__contents-container__title">{{destinationData?.destinationName}}</span>
         <a href="http://localhost:4200/room-1" class="destination-card__contents-container__btn-show-rates" >Book</a>
-        <div class="destination-card__contents-container__amenities-container">
-            <span class="destination-card__contents-container__amenities-container__name">Amenities</span>
-            <div class="destination-card__contents-container__amenities-container__amenities">
-                <span class="material-symbols-outlined verified">air</span>
-                <span class="material-symbols-outlined verified">wifi</span>
-                <span class="material-symbols-outlined">pool</span>
-                <span class="material-symbols-outlined">ac_unit</span>
-            </div>
-        </div>
+
         <!-- <div class="destination-card__contents-container__location tooltip-parent" >
             <span class="material-symbols-outlined" >pin_drop</span>
             <span>{{destinationData?.location}}</span>
@@ -33,6 +25,15 @@
         <div class="destination-card__contents-container__person-count" >
             <span class="material-symbols-outlined">person</span>
             <span>{{destinationData?.personCount + " person" }}</span>
+        </div>
+        <div class="destination-card__contents-container__amenities-container">
+            <span class="destination-card__contents-container__amenities-container__name">Amenities</span>
+            <div class="destination-card__contents-container__amenities-container__amenities">
+                <span class="material-symbols-outlined verified">air</span>
+                <span class="material-symbols-outlined verified">wifi</span>
+                <span class="material-symbols-outlined">pool</span>
+                <span class="material-symbols-outlined">ac_unit</span>
+            </div>
         </div>
         <span class="destination-card__contents-container__description">{{destinationData?.description}}</span>
     </div>
