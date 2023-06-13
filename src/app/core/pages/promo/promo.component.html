@@ -1,0 +1,92 @@
+<div class="promo-container">
+
+   <div class="promo-container__header-content">
+      <div class="promo-container__header-content__img-container">
+         <img [src]='data.image'>
+      </div>
+
+      <div class="promo-container__header-content__main-card">
+
+         <button class="promo-container__header-content__main-card__buy-btn">Login to Buy</button>
+
+         <div class="promo-container__header-content__main-card__discount-ribbon">
+            <span>{{data.price.cutPer}} %off</span>
+         </div>
+
+         <div class="promo-container__header-content__main-card__quantity">
+            <label>Quantity:</label>
+         <button (click)="decrementQuantity()">-</button>
+        <input type="number" [value] = data.quantity (input)="calculatePrice()" (click)="incrementQuantity()"  >
+         <button (click)="incrementQuantity()">+</button>
+          </div>
+
+          <div class="promo-container__header-content__main-card__value">
+            <label>Price:</label>
+            <span>{{ data.price.value}} </span>
+            </div>
+            <div class="promo-container__header-content__main-card__note">
+               <p>Purchase up to 10 for use at any time within the booking period, see specific voucher terms and conditions below for further details and restrictions.</p>
+            </div>
+
+      </div>
+
+
+   </div>
+
+   <div class="promo-container__name-container">
+      <h4>{{data.name}}</h4>
+   </div>
+
+   <div class="promo-container__content-container">
+
+      <div *ngFor="let section of data.section">
+         <h3>{{section.title}}</h3>
+         <ul *ngFor="let content of section.contents" >
+            <li>{{content}}</li>
+         </ul>
+      </div>
+
+      <!-- <ul>
+         <p>{{ data.section[0].title }}</p>
+         <li>{{data.section[0].contents[0]}}</li>
+         <li>{{data.section[0].contents[1]}}</li>
+         <li>{{data.section[0].contents[2]}}</li>
+         <li>{{data.section[0].contents[3]}}</li>
+         </ul>
+      
+         <ul>
+           <p>{{data.section[1].title}}</p>
+           <li>{{data.section[1].contents[0]}}</li>
+           <li>{{data.section[1].contents[1]}}</li>
+           <li>{{data.section[1].contents[2]}}</li>
+           <li>{{data.section[1].contents[3]}}</li>
+         </ul>
+   
+         <ul>
+            <p>{{data.section[2].title}}</p>
+            <li>{{data.section[2].contents[0]}}</li>
+            <li>{{data.section[2].contents[1]}}</li>
+            <li>{{data.section[2].contents[2]}}</li>
+            <li>{{data.section[2].contents[3]}}</li>
+            <li>{{data.section[2].contents[4]}}</li>
+            <li>{{data.section[2].contents[5]}}</li>
+          </ul>
+   
+          <ul>
+            <p>{{data.section[3].title}}</p>
+            <li>{{data.section[3].contents[0]}}</li>
+            <li>{{data.section[3].contents[1]}}</li>
+            <li>{{data.section[3].contents[2]}}</li>
+            <li>{{data.section[3].contents[3]}}</li>
+        
+         </ul> -->
+   
+   
+   </div>
+   
+
+   
+
+   
+
+</div>

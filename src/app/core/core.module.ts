@@ -7,6 +7,11 @@ import { LocationPageComponent } from './pages/location/location.component';
 import { FooterComponent } from './components/footer/footer.components';
 import { ExclusiveofferPageComponent } from './pages/exclusiveOffer/exlusiveOffer.component';
 import { OfferComponent } from './components/exclusive/offer.component';
+import { PromoComponent } from './pages/promo/promo.component';
+import { fanRoomComponent } from './pages/fanRoom/fanRoom.component';
+import { PassComponent } from './pages/pass/pass.component';
+import { CouponComponent } from './components/coupon/coupon.component';
+
 
 
 
@@ -17,7 +22,12 @@ import { OfferComponent } from './components/exclusive/offer.component';
     LocationPageComponent,
     FooterComponent,
     ExclusiveofferPageComponent,
-    OfferComponent
+    OfferComponent,
+    PromoComponent,
+    fanRoomComponent,
+    PassComponent,
+    CouponComponent,
+    
   ],
   exports : [
     HeaderComponent,
@@ -25,7 +35,13 @@ import { OfferComponent } from './components/exclusive/offer.component';
     LocationPageComponent,
     FooterComponent,
     ExclusiveofferPageComponent,
-    OfferComponent
+    OfferComponent,
+    PromoComponent,
+    fanRoomComponent,
+    PassComponent,
+    CouponComponent,
+
+   
   ],
   imports: [
     BrowserModule,
