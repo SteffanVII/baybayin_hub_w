@@ -26,6 +26,9 @@ export class ExclusiveofferPageComponent {
     Promos : Promo[] = [
         {
             image : '../../../../assets/KuboDorm_5D4N.png',
+            images : [
+
+            ],
             name : "Silver Membership Promo",
             quantity: 1,
             price : {
@@ -72,6 +75,9 @@ export class ExclusiveofferPageComponent {
         },
         {
             image :'../../../../assets/work-by-the-beach_7days.png' ,
+            images : [
+
+            ],
             name : "Dorm Fan Room_5D4N",
             quantity: 1,
             price : {
@@ -91,6 +97,9 @@ export class ExclusiveofferPageComponent {
         },
         {
             image :'../../../../assets/work-by-the-beach_30days_rev1.png' ,
+            images : [
+
+            ],
             name : "Dorm Fan Room_5D4N",
             quantity: 1,
             price : {
@@ -110,6 +119,9 @@ export class ExclusiveofferPageComponent {
         },
         {
             image :'../../../../assets/website-artwork.png' ,
+            images : [
+
+            ],
             name : "Dorm Fan Room_5D4N",
             quantity: 1,
             price : {

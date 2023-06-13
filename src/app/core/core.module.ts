@@ -12,6 +12,7 @@ import { fanRoomComponent } from './pages/fanRoom/fanRoom.component';
 import { PassComponent } from './pages/pass/pass.component';
 import { CouponComponent } from './components/coupon/coupon.component';
 import { FormsModule } from '@angular/forms';
+import { ViewportGalleryComponent } from './components/viewportgallery/viewportgallery.component';
 
 
 
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     fanRoomComponent,
     PassComponent,
     CouponComponent,
+    ViewportGalleryComponent
     
   ],
   exports : [

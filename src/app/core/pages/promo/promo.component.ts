@@ -11,6 +11,17 @@ import { Promo } from "../silverMembership/exclusive.model";
 export class PromoComponent {
     @Input() data : Promo  = { 
         image : 'https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2023/01/website-artwork.png',
+        images : [
+            "https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2022/07/Bacnotan-Cabana1.png",
+            "https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2023/02/BHub-La-Union.png",
+            "https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2023/02/BHub-La-Union-1.png",
+            "https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2023/02/BHub-La-Union-2.png",
+            "https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2023/02/BHub-La-Union-3.png",
+            "https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2023/02/BHub-La-Union-5.png",
+            "https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2023/02/BHub-La-Union-6.png",
+            "https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2023/02/BHub-La-Union-4.png",
+            "https://baybayinhub.digitalcommerce.ph/wp-content/uploads/2022/07/Bacnotan-Cabana4.png",
+        ],
         name : "Silver Membership Promo",
         quantity : 1,
         price : {

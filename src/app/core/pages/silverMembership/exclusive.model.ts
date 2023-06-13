@@ -1,5 +1,6 @@
 export type Promo =  {
     image : string,
+    images : string[],
     name : string,
     quantity : number,
     price : {

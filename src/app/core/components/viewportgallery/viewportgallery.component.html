@@ -1,0 +1,37 @@
+<div class="viewport-gallery"
+    [ngClass]="{
+        'closing' : closing
+    }"
+    (animationend)="transitionEnd($event)"
+>
+
+    <button class="viewport-gallery__prev-btn" (click)="prev()" >
+        <span class="material-symbols-outlined">chevron_left</span>
+    </button>
+    <button class="viewport-gallery__next-btn" (click)="next()">
+        <span class="material-symbols-outlined">chevron_right</span>
+    </button>
+
+    <button class="viewport-gallery__close-btn" (click)="close()" >
+        <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <div class="viewport-gallery__curr">
+        <img [src]="images[position]">
+    </div>
+
+    <div #previewsContainer class="viewport-gallery__previews" >
+        <ng-container *ngFor=" let img of images; let i = index " >
+            <button class="viewport-gallery__previews__preview"
+                    [ngClass]="{
+                        'active' : i == position
+                    }"
+                    (click)="changePosition(i)"
+                    [id]="'viewport-gallery-preview-' + i"
+            >
+                <img [src]="img">
+            </button>
+        </ng-container>
+    </div>
+
+</div>

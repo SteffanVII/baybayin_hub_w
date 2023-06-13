@@ -2,28 +2,40 @@
 
    <div class="promo-container__header-content">
       <div class="promo-container__header-content__img-container">
-         <img [src]='data.image'>
+         <div class="promo-container__header-content__img-container__main-image" >
+            <img [src]='data.image'>
+         </div>
+         <div class="promo-container__header-content__img-container__other-images" >
+            <ng-container *ngFor="let img of data.images; let i = index" >
+               <button *ngIf="i < 3" class="promo-container__header-content__img-container__other-images__other-image" >
+                  <img [src]="img">
+               </button>
+            </ng-container>
+         </div>
       </div>
 
       <div class="promo-container__header-content__main-card">
-
          <div class="promo-container__header-content__main-card__discount-ribbon">
             <span>{{data.price.cutPer}} %off</span>
          </div>
-         <span class="promo-container__header-content__main-card__price">
-            {{formatPrice(this.data.price.value)}}
-         </span>
-         <div class="promo-container__header-content__main-card__quantity">
-            <label>Quantity:</label>
-            <div class="promo-container__header-content__main-card__quantity__inputs">
-               <input type="number" [min]="1" [(ngModel)]="quantity"  >
-            </div>
+         <div class="promo-container__header-content__main-card__row-1">
+            <span class="promo-container__header-content__main-card__row-1__price">
+               {{formatPrice(this.data.price.value)}}
+            </span>
+            <button class="promo-container__header-content__main-card__row-1__buy-btn">Login to Buy</button>
          </div>
-         <button class="promo-container__header-content__main-card__buy-btn">Login to Buy</button>
-
-          <div class="promo-container__header-content__main-card__value">
-            <label>Price:</label>
-            <span>{{formatPrice(this.data.price.value * quantity)}} </span>
+         <div class="promo-container__header-content__main-card__row-2">
+            <div class="promo-container__header-content__main-card__row-2__quantity">
+               <label>Quantity:</label>
+               <div class="promo-container__header-content__main-card__row-2__quantity__inputs">
+                  <input type="number" [min]="1" [(ngModel)]="quantity"  >
+               </div>
+            </div>
+   
+             <div class="promo-container__header-content__main-card__value">
+               <label>Price: </label>
+               <span>  {{formatPrice(this.data.price.value * quantity)}} </span>
+            </div>
          </div>
          <div class="promo-container__header-content__main-card__note">
             <p>Purchase up to 10 for use at any time within the booking period, see specific voucher terms and conditions below for further details and restrictions.</p>

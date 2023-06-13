@@ -12,6 +12,9 @@ export class fanRoomComponent {
 
     data : Promo = {
         image : '../../../../assets/KuboDorm_5D4N.png',
+        images : [
+
+        ],
         name : "Silver Membership Promo",
         quantity : 1,
         price : {

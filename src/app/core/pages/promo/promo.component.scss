@@ -15,12 +15,42 @@
         color: rgba(0,0,0,.87);
 
         &__img-container {
+            position: relative;
 
-            img {
-            width: 600px;
-            height: 500px;
-            border-radius: 10px;
-    
+            display: grid;
+            grid-template-columns: min-content min-content;
+            gap: 10px;
+
+            &__main-image {
+                width: fit-content;
+                height: fit-content;
+
+                img {
+                    width: 500px;
+                }
+            }
+
+            &__other-images {
+                position: relative;
+
+                display: grid;
+                grid-template-rows: repeat(1fr, 3);
+                gap: 10px;
+
+                height: 100%;
+                &__other-image {
+                    position: relative;
+                    width: 200px;
+                    height: 100%;
+
+                    border: none;
+                    background-color: transparent;
+                    img {
+                        width: 100%;
+
+                        object-fit: cover;
+                    }
+                }
             }
         }
 
@@ -28,33 +58,121 @@
             position: relative;
 
             width: 100%;
+            max-width: 500px;
             height: fit-content;
 
             padding: 40px;
 
             // outline: 1px solid red;
 
-            display: grid;
-            grid-template-columns: 1fr min-content;
-            grid-template-rows: repeat(4,min-content);
+            // display: grid;
+            // grid-template-columns: 1fr min-content;
+            // grid-template-rows: repeat(4,min-content);
+            display: flex;
+            flex-flow: column;
+            gap: 10px;
 
             box-shadow: 0px 2px 10px 2px rgba(128, 128, 128, 0.1);
 
             &__buy-btn, &__price, &__discount-ribbon, &__value, &__note {
                 font-family: $poppins;
             }
-            
-            &__buy-btn {
-                width: fit-content;
-                height: fit-content;
-                padding: 10px 15px;
-                
-                border: none;
-                
-                background-color: #ffc326;
-                
-                font-weight: 600;
+
+            &__row-1 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                &__price {
+                    font-family: $poppins;
+                }
+
+                &__buy-btn {
+                    width: fit-content;
+                    height: fit-content;
+                    padding: 10px 15px;
+                    
+                    border: none;
+                    
+                    background-color: #ffc326;
+                    
+                    font-weight: 600;
+                    font-family: $poppins;
+                }
             }
+
+            &__row-2 {
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+
+                &__quantity {
+
+                    width: fit-content;
+                    height: fit-content;
+    
+                    display: flex;
+                    flex-flow: column;
+                    gap: 10px;
+    
+                    padding: 20px;
+                    background-color: rgb(182, 205, 212);
+    
+                    border-radius: 10px;
+    
+                    label {
+                        font-family: $poppins;
+                    }
+    
+                    &__inputs {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+    
+                        input {
+                            padding: 10px;
+                        }
+    
+                        button {
+                            width: 30px;
+                            height: 30px;
+    
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+    
+                            border: none;
+                            // border: 1px solid black;
+    
+                            padding: 5px;
+                            background-color: transparent;
+    
+                            font-family: $poppins;
+                            font-weight: 900;
+    
+                            transition: transform 0.2s;
+    
+                            &::-webkit-outer-spin-button {
+                                display: none;
+                            }
+    
+                            &::-webkit-inner-spin-button {
+                                display: none;
+                            }
+                            
+                            &:active {
+                                transform: translateY(5px);
+                                transition: transform 0.2s;
+                            }
+                        }
+                    }
+    
+                }
+
+            }
+            
             
             &__discount-ribbon {
                 position: absolute;
@@ -69,67 +187,7 @@
                 font-weight: 600;
             }
 
-            &__quantity {
 
-                height: fit-content;
-
-                display: flex;
-                flex-flow: column;
-                gap: 10px;
-
-                padding: 20px;
-                background-color: rgb(182, 205, 212);
-
-                border-radius: 10px;
-
-                label {
-                    font-family: $poppins;
-                }
-
-                &__inputs {
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-
-                    input {
-                        padding: 10px;
-                    }
-
-                    button {
-                        width: 30px;
-                        height: 30px;
-
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-
-                        border: none;
-                        // border: 1px solid black;
-
-                        padding: 5px;
-                        background-color: transparent;
-
-                        font-family: $poppins;
-                        font-weight: 900;
-
-                        transition: transform 0.2s;
-
-                        &::-webkit-outer-spin-button {
-                            display: none;
-                        }
-
-                        &::-webkit-inner-spin-button {
-                            display: none;
-                        }
-                        
-                        &:active {
-                            transform: translateY(5px);
-                            transition: transform 0.2s;
-                        }
-                    }
-                }
-
-            }
 
             &__note {
                 grid-column: 1/3;
