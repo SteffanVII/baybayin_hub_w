@@ -36,13 +36,7 @@
     &:hover & {
 
         &__img-container {
-            img {
-                transform: scale(1.01);
-                transition: transform 0.2s;
-                transition: opacity 0.2s,
-                            color 0.2s,
-                            background-color 0.2s;
-            }
+           
         }
 
         &__btn-details {

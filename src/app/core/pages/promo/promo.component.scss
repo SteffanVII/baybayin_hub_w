@@ -27,6 +27,7 @@
 
                 img {
                     width: 500px;
+                    border-radius: 5px;
                 }
             }
 
@@ -47,6 +48,7 @@
                     background-color: transparent;
                     img {
                         width: 100%;
+                        border-radius: 5px;
 
                         object-fit: cover;
                     }
@@ -60,6 +62,7 @@
             width: 100%;
             max-width: 500px;
             height: fit-content;
+            
 
             padding: 40px;
 
@@ -72,7 +75,12 @@
             flex-flow: column;
             gap: 10px;
 
-            box-shadow: 0px 2px 10px 2px rgba(128, 128, 128, 0.1);
+            background: #fff;
+            color: rgba(0,0,0,.87);
+
+            box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+
+           // box-shadow: 0px 2px 10px 2px rgba(128, 128, 128, 0.1);
 
             &__buy-btn, &__price, &__discount-ribbon, &__value, &__note {
                 font-family: $poppins;
@@ -84,21 +92,48 @@
                 align-items: center;
 
                 &__price {
+                    display: grid;
+                    grid-row: 1fr 1fr;
+
                     font-family: $poppins;
+                    font-size: 1.3rem;
+
+                   
+    
+                    
                 }
+
+                &__origprice {
+                    font-size: 0.8rem;
+
+                    .origprice{
+                        color: red;
+                        text-decoration: line-through;
+                }
+
+                .percent {
+                    background-color: #ffc326;
+                    padding: 7px;
+                }
+
+                    }
 
                 &__buy-btn {
                     width: fit-content;
                     height: fit-content;
-                    padding: 10px 15px;
+                    padding: 15px 20px;
+                    border-radius: 5px;
                     
                     border: none;
                     
                     background-color: #ffc326;
                     
                     font-weight: 600;
+                    font-size: 15px;
                     font-family: $poppins;
                 }
+
+
             }
 
             &__row-2 {
@@ -125,8 +160,12 @@
                     label {
                         font-family: $poppins;
                     }
+
+                    
+                    }
     
                     &__inputs {
+                        font-family: $poppins;
                         display: flex;
                         align-items: center;
                         gap: 5px;
@@ -136,7 +175,7 @@
                         }
     
                         button {
-                            width: 30px;
+                            width: 0px;
                             height: 30px;
     
                             display: flex;
@@ -171,25 +210,35 @@
     
                 }
 
+                &__value {
+                    font-size: 20px;
+
+               
+
             }
             
             
             &__discount-ribbon {
                 position: absolute;
-                top: 20px;
-                left: 0;
+                top: -5px;
+                left: 5;
                 transform: translateX(-50%);
                 
-                padding: 10px;
+                padding: 20px;
                 
                 background-color: #ffc326;
                 
                 font-weight: 600;
+
+                padding: 0.5em;
+                z-index: 1;
+              
             }
 
 
 
             &__note {
+                margin-top: 20px;
                 grid-column: 1/3;
                 grid-row: 3/4;
             }
@@ -197,6 +246,7 @@
         }
 
         &__logIn-btn {
+    
             padding: 0 2em;
             margin-left: auto;
             font-size: 16px;
@@ -208,6 +258,8 @@
             line-height: 56px;
             margin-left: 300px;
             margin-top: 10px;
+
+            
             
         }
     }
